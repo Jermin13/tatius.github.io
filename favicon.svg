@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="balloon1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fddd25"/>
+      <stop offset="100%" style="stop-color:#fbbc04"/>
+    </linearGradient>
+    <linearGradient id="balloon2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb7185"/>
+      <stop offset="100%" style="stop-color:#e11d48"/>
+    </linearGradient>
+    <linearGradient id="balloon3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Balloon 1 (yellow) -->
+  <ellipse cx="30" cy="35" rx="18" ry="20" fill="url(#balloon1)"/>
+  <path d="M30 53 L30 65" stroke="#fbbc04" stroke-width="2"/>
+  <ellipse cx="24" cy="32" rx="5" ry="7" fill="#fff" opacity="0.4"/>
+  
+  <!-- Balloon 2 (pink) -->
+  <ellipse cx="55" cy="30" rx="17" ry="19" fill="url(#balloon2)"/>
+  <path d="M55 48 L55 60" stroke="#e11d48" stroke-width="2"/>
+  <ellipse cx="50" cy="27" rx="4" ry="6" fill="#fff" opacity="0.4"/>
+  
+  <!-- Balloon 3 (green) -->
+  <ellipse cx="75" cy="38" rx="16" ry="18" fill="url(#balloon3)"/>
+  <path d="M75 55 L75 65" stroke="#059669" stroke-width="2"/>
+  <ellipse cx="71" cy="35" rx="4" ry="6" fill="#fff" opacity="0.4"/>
+  
+  <!-- Strings -->
+  <path d="M30 65 Q25 75 30 85" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M55 60 Q50 70 55 80" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M75 65 Q80 75 75 85" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  
+  <!-- Cake -->
+  <rect x="25" y="85" width="50" height="12" rx="2" fill="#f8fafc"/>
+  <rect x="25" y="85" width="50" height="4" fill="#e2e8f0"/>
+  <rect x="25" y="89" width="50" height="8" fill="#f8fafc"/>
+  <ellipse cx="35" cy="85" rx="4" ry="3" fill="#fb7185"/>
+  <ellipse cx="45" cy="85" rx="4" ry="3" fill="#34d399"/>
+  <ellipse cx="55" cy="85" rx="4" ry="3" fill="#fddd25"/>
+  <ellipse cx="65" cy="85" rx="4" ry="3" fill="#60a5fa"/>
+</svg>
