@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LilyFlower from '../components/LilyFlower'
 
-const CANASTA_WIDTH = 72
-const CANASTA_HEIGHT = 36
+const CANASTA_WIDTH = 88
+const CANASTA_HEIGHT = 42
 const OBJ_SIZE = 36
 const AREA_WIDTH = Math.min(360, window.innerWidth - 32)
 const AREA_HEIGHT = 500
@@ -35,30 +35,41 @@ function getInitialObjects() {
   }))
 }
 
-function Canasta({ x }) {
+function Basket({ x }) {
+  const width = CANASTA_WIDTH
+  const height = CANASTA_HEIGHT
   return (
     <div
       style={{
         position: 'absolute',
         left: x,
-        bottom: 20,
-        width: CANASTA_WIDTH,
-        height: CANASTA_HEIGHT,
-        backgroundColor: '#FFF8DC',
+        bottom: 12,
+        width,
+        height,
+        borderRadius: '14px 14px 18px 18px',
         border: '2px solid #D4A574',
-        borderRadius: '8px 8px 4px 4px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.4), inset 0 -4px 8px rgba(0,0,0,0.1)',
+        background:
+          'repeating-linear-gradient(-45deg,#D09A5B 0px,#D09A5B 4px,#C58B4C 4px,#C58B4C 8px)',
+        backgroundColor: '#E2B572',
+        backgroundBlendMode: 'multiply',
+        boxShadow: '0 8px 20px rgba(0,0,0,0.45)',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'flex-start'
       }}
     >
-      <div style={{ 
-        width: '80%', 
-        height: '60%', 
-        background: 'linear-gradient(to bottom, rgba(212,165,116,0.3), transparent)',
-        borderRadius: '4px'
-      }} />
+      <div
+        style={{
+          marginTop: -4,
+          width: '80%',
+          height: 10,
+          borderRadius: '10px 10px 6px 6px',
+          background:
+            'linear-gradient(to right,#F7E0B8,#E9C78D)',
+          boxShadow:
+            'inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.25)'
+        }}
+      />
     </div>
   )
 }
@@ -352,7 +363,7 @@ return updated
             <FallingObject key={obj.id} obj={obj} />
           ))}
 
-          <Canasta x={playerX} />
+          <Basket x={playerX} />
 
           {gameState === 'gameover' && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20">
