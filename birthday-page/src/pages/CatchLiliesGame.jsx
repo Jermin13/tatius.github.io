@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import LilyFlower from '../components/LilyFlower'
 
 const CANASTA_WIDTH = 72
 const CANASTA_HEIGHT = 36
@@ -63,35 +64,6 @@ function Canasta({ x }) {
 }
 
 function FallingObject({ obj }) {
-  const colors = {
-    lily: { bg: '#FFD700', glow: '0 0 10px #FFD700' },
-    flower: { bg: '#FFD966', glow: '0 0 8px #FFD966' },
-    thorn: { bg: '#3b1b2b', glow: '0 0 4px #8b0000' }
-  }
-  const style = colors[obj.type]
-
-  if (obj.type === 'thorn') {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          left: obj.x,
-          top: obj.y,
-          width: OBJ_SIZE,
-          height: OBJ_SIZE,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <svg width={OBJ_SIZE - 8} height={OBJ_SIZE - 8} viewBox="0 0 24 24">
-          <polygon points="12,2 22,12 12,22 2,12" fill="#3b1b2b" stroke="#8b0000" strokeWidth="1" opacity="0.8" />
-          <circle cx="12" cy="12" r="3" fill="#500" />
-        </svg>
-      </div>
-    )
-  }
-
   return (
     <div
       style={{
@@ -100,20 +72,12 @@ function FallingObject({ obj }) {
         top: obj.y,
         width: OBJ_SIZE,
         height: OBJ_SIZE,
-        backgroundColor: style.bg,
-        borderRadius: '50%',
-        boxShadow: style.glow,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       }}
     >
-      <svg width={OBJ_SIZE - 12} height={OBJ_SIZE - 12} viewBox="0 0 24 24">
-        <ellipse cx="12" cy="8" rx="4" ry="6" fill={obj.type === 'lily' ? '#FFD700' : '#FFD966'} opacity="0.9" />
-        <ellipse cx="8" cy="10" rx="3" ry="5" fill={obj.type === 'lily' ? '#FFD700' : '#FFD966'} transform="rotate(-30 8 10)" opacity="0.8" />
-        <ellipse cx="16" cy="10" rx="3" ry="5" fill={obj.type === 'lily' ? '#FFD700' : '#FFD966'} transform="rotate(30 16 10)" opacity="0.8" />
-        <circle cx="12" cy="14" r="3" fill={obj.type === 'lily' ? '#DAA520' : '#F4C430'} />
-      </svg>
+      <LilyFlower size={OBJ_SIZE - 4} variant={obj.type} />
     </div>
   )
 }
