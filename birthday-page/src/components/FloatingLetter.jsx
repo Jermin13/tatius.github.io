@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 const BUTTON_SIZE = 64
 const MARGIN = 48
 const NUM_WAYPOINTS = 7
+const NUM_WAYPOINTS2 = 5
 const ANIMATION_DURATION = 20
 
 function generateWaypoints(count) {
@@ -40,17 +41,19 @@ function FloatingLetter() {
 
   const waypoints = useMemo(() => generateWaypoints(NUM_WAYPOINTS), [])
   const keyframes = useMemo(() => createKeyframes(waypoints), [waypoints])
+  const waypoints2 = useMemo(() => generateWaypoints(NUM_WAYPOINTS2), [])
+  const keyframes2 = useMemo(() => createKeyframes(waypoints2), [waypoints2])
 
   useEffect(() => {
     const styleEl = document.createElement('style')
     styleEl.id = 'floating-letter-keyframes'
-    styleEl.textContent = `@keyframes floatRandom {\n${keyframes}\n}`
+    styleEl.textContent = `@keyframes floatRandom {\n${keyframes}\n}@keyframes floatRandom2 {\n${keyframes2}\n}`
     document.head.appendChild(styleEl)
     return () => {
       const existing = document.getElementById('floating-letter-keyframes')
       if (existing) existing.remove()
     }
-  }, [keyframes])
+  }, [keyframes, keyframes2])
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,9 +61,11 @@ function FloatingLetter() {
       if (existing) existing.remove()
       const newPoints = generateWaypoints(NUM_WAYPOINTS)
       const newKeyframes = createKeyframes(newPoints)
+      const newPoints2 = generateWaypoints(NUM_WAYPOINTS2)
+      const newKeyframes2 = createKeyframes(newPoints2)
       const styleEl = document.createElement('style')
       styleEl.id = 'floating-letter-keyframes'
-      styleEl.textContent = `@keyframes floatRandom {\n${newKeyframes}\n}`
+      styleEl.textContent = `@keyframes floatRandom {\n${newKeyframes}\n}@keyframes floatRandom2 {\n${newKeyframes2}\n}`
       document.head.appendChild(styleEl)
     }
     window.addEventListener('resize', handleResize)
@@ -160,9 +165,11 @@ function FloatingLetter() {
           onMouseLeave={() => setIsHovered(false)}
           style={{
             ...bubbleStyle,
-            bottom: '24px',
-            left: '24px',
-            animation: 'floatRandom 20s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            top: 0,
+            left: 0,
+            marginTop: '64px',
+            marginLeft: '64px',
+            animation: 'floatRandom2 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
             animationDelay: '0s',
             animationPlayState: isHovered ? 'paused' : 'running'
           }}
@@ -179,7 +186,7 @@ function FloatingLetter() {
               e.currentTarget.style.transform = 'translateX(10px)'
             }}
           >
-            ¡Feliz cumpleaños! 🎉
+            Mi amor cada vez mas cerca a la hora esperada, te amo mucho que emoción que alegria en mi corazon, 💛
           </span>
         </button>
         
